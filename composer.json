@@ -1,0 +1,14 @@
+{
+  "name": "shakil/mvcfrmework",
+  "authors": [
+    {
+      "name": "Shakil22291",
+      "email": "64760910+Shakil22291@users.noreply.github.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "./"
+    }
+  }
+}
