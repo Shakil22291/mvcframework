@@ -29,7 +29,7 @@
                         id="body"
                     ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
             </form>
         </div>
     </div>
