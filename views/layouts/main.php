@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
+    <?php if (\App\Core\Application::$app->session->getFlash('success')) : ?>
+        <div class="alert alert-success">
+            <?php echo \App\Core\Application::$app->session->getFlash('success') ?>
+        </div>
+    <?php endif; ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav">
