@@ -1,6 +1,6 @@
 <?php
 
-use App\Core\Application;
+use App\core\Application;
 
 class m0002_add_password_to_users_table
 {

@@ -4,7 +4,7 @@ class m0001_initial
 {
     public function up()
     {
-        $db = \App\Core\Application::$app->db;
+        $db = \App\core\Application::$app->db;
 
         $sql = "
             CREATE TABLE users (
@@ -22,7 +22,7 @@ class m0001_initial
 
     public function down()
     {
-        $db = \App\Core\Application::$app->db;
+        $db = \App\core\Application::$app->db;
         $sql = "DROP TABLE users";
         $db->pdo->exec($sql);
     }

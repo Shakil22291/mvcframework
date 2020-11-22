@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Form;
+namespace App\core\Form;
 
-use App\Core\Model;
+use App\core\Model;
 
 class Form
 {

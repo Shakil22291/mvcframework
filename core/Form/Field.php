@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Core\Form;
+namespace App\core\Form;
 
-use App\Core\Model;
+use App\core\Model;
 
 class Field
 {
     public const TYPE_TEXT = 'text';
-    public const TYPE_NOMBER = 'nomber';
+    public const TYPE_NUMBER = 'number';
     public const TYPE_PASSWORD = 'password';
 
     public string $type;
@@ -17,11 +17,11 @@ class Field
     public function __construct(Model $model, string $attribute)
     {
         $this->type = self::TYPE_TEXT;
-        $this->model     = $model;
+        $this->model = $model;
         $this->attribute = $attribute;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf(
             '
@@ -36,7 +36,7 @@ class Field
                     <div class="invalid-feedback">%s</div>
                 </div>
             ',
-            $this->attribute,
+            $this->model->getLabel($this->attribute),
             $this->type,
             $this->attribute,
             $this->model->{$this->attribute},
@@ -45,7 +45,7 @@ class Field
         );
     }
 
-    public function passwordField()
+    public function passwordField(): Field
     {
         $this->type = self::TYPE_PASSWORD;
         return $this;
