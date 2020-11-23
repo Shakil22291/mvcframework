@@ -57,7 +57,10 @@ class Router
 
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        $layout = Application::$app->layout;
+        if (Application::$app->controller) {
+            $layout = Application::$app->controller->layout;
+        }
 
         ob_start();
         require_once Application::$ROOT_DIR . "/views/layouts/{$layout}.php";
