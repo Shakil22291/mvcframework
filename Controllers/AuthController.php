@@ -8,9 +8,17 @@ use App\Core\Response;
 use App\core\Controller;
 use App\core\Application;
 use App\Models\LoginForm;
+use App\Core\Middlewares\AuthMiddleware;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->registerMiddleware(
+            new AuthMiddleware(['profile'])
+        );
+    }
+
     public function login(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
