@@ -6,7 +6,7 @@ use Exception;
 
 class Application
 {
-    public string $layout = "main";
+    public string $layout = 'main';
     public string $userClass;
     public static string $ROOT_DIR;
     public Router $router;
@@ -17,6 +17,7 @@ class Application
     public ?Controller $controller = null;
     public DataBase $db;
     public ?DbModel $user;
+    public View $view;
 
     public function __construct($rootPath, array $config)
     {
@@ -28,6 +29,7 @@ class Application
         $this->session   = new Session();
         $this->router    = new Router($this->request, $this->response);
         $this->db        = new DataBase($config['db']);
+        $this->view      = new View();
 
         $primaryValue = $this->session->get('user');
         if ($primaryValue) {
@@ -42,11 +44,11 @@ class Application
     {
         try {
             echo $this->router->resolve();
-        }catch(Exception $e) {
+        } catch (Exception $e) {
             $this->response->setStatusCode($e->getCode());
 
-            echo $this->router->renderView('_error', [
-                'exception' => $e
+            echo $this->view->render('_error', [
+                'exception' => $e,
             ]);
         }
     }
