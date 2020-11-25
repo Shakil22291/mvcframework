@@ -4,7 +4,9 @@
  * @var $model App\Models\ContactForm
  */
 
- $this->title = "Contact us";
+use App\Core\Form\Textarea;
+
+$this->title = "Contact us";
 ?>
 <div class="container">
     <div class="row">
@@ -13,7 +15,7 @@
             <?php $form = App\core\Form\Form::begin('', 'post') ?>
             <?= $form->field($model, 'subject'); ?>
             <?= $form->field($model, 'email')->email(); ?>
-            <?= $form->field($model, 'body'); ?>
+            <?= new Textarea($model, 'body'); ?>
             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             <?php $form = App\core\Form\Form::end() ?>
         </div>

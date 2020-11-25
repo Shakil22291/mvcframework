@@ -2,10 +2,10 @@
 
 namespace App\core\Form;
 
-use App\Core\Form\BaseField;
 use App\core\Model;
+use App\Core\Form\BaseField;
 
-class Field extends BaseField
+class InputField extends BaseField
 {
     public const TYPE_TEXT     = 'text';
     public const TYPE_EMAIL    = 'email';
@@ -13,14 +13,12 @@ class Field extends BaseField
     public const TYPE_PASSWORD = 'password';
 
     public string $type;
-    public Model $model;
-    public string $attribute;
 
     public function __construct(Model $model, string $attribute)
     {
-        $this->type      = self::TYPE_TEXT;
-        $this->model     = $model;
-        $this->attribute = $attribute;
+        $this->type = self::TYPE_TEXT;
+
+        parent::__construct($model, $attribute);
     }
 
     public function renderInput(): string
@@ -34,7 +32,7 @@ class Field extends BaseField
         );
     }
 
-    public function password(): Field
+    public function password(): InputField
     {
         $this->type = self::TYPE_PASSWORD;
         return $this;
