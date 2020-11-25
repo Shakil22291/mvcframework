@@ -1,6 +1,9 @@
 <?php
 
-namespace App\Core;
+namespace App\Core\Db;
+
+use App\Core\Application;
+use App\Core\Model;
 
 abstract class DbModel extends Model
 {
@@ -17,7 +20,7 @@ abstract class DbModel extends Model
         $params = array_map(fn($attr) => ":$attr", $attributes);
 
         $statement = self::prepare(
-            "INSERT INTO {$tableName} (" . implode(',', $attributes) . ') 
+            "INSERT INTO {$tableName} (" . implode(',', $attributes) . ')
                     VALUES (' . implode(',', $params) . ') '
         );
 

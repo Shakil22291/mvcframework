@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\Db\DataBase;
+use App\core\UserModel;
 use Exception;
 
 class Application
@@ -16,7 +18,7 @@ class Application
     public static Application $app;
     public ?Controller $controller = null;
     public DataBase $db;
-    public ?DbModel $user;
+    public ?UserModel $user;
     public View $view;
 
     public function __construct($rootPath, array $config)
@@ -63,7 +65,7 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(DbModel $user): bool
+    public function login(UserModel $user): bool
     {
         $this->user   = $user;
         $primaryKey   = $user->primaryKey();
